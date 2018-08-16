@@ -1,5 +1,7 @@
 // FSJS - Random Quote Generator
 
+var message = "";
+
 // Create the array of quote objects and name it quotes
 var quotes = [
     {
@@ -29,12 +31,25 @@ var quotes = [
 ]
 
 
-// Create the getRandomQuuote function and name it getRandomQuote
+// Create the getRandomQuote function and name it getRandomQuote
+function getRandomQuote(array) {
+    var randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
+    
+    return randomQuote;
+};
 
+getRandomQuote();
 
 
 // Create the printQuote funtion and name it printQuote
+function printQuote(randomQuote) {
+    randomQuote = getRandomQuote();
+    message =  '<p class="quote">' + randomQuote.quote + '</p>';
+    message += '<p class="source">' + randomQuote.source;
+    document.getElementById('quote-box').innerHTML = message;
+    return message;
 
+};
 
 
 // This event listener will respond to "Show another quote" button clicks
