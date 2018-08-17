@@ -13,6 +13,7 @@ body {
   right: 10%;
   width: 80%;
   line-height: .5;
+  background-color: black
 }
 
 .quote {
@@ -81,6 +82,7 @@ body {
   background-color: #36b55c;
   padding: 15px 0;
   transition: .5s ;
+  border-radius: 50%
 }
 #loadQuote:hover {
   background-color: rgba(255,255,255,.25);

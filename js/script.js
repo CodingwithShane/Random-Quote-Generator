@@ -1,7 +1,5 @@
 // FSJS - Random Quote Generator
 
-var message = "";
-
 // Create the array of quote objects and name it quotes
 var quotes = [
     {
@@ -20,8 +18,8 @@ var quotes = [
     },
     {
         quote: '<b>DL:</b>"How did you know so much about computers?"<br><b>Grace Hopper</b> - “I didn’t, it was the first one"',
-        source: "David Letterman interview with Grace Hopper.",
-        citation: "Late Night with David Letterman.",
+        source: "David Letterman interview with Grace Hopper",
+        citation: "Late Night with David Letterman",
         year: 1986
     },
     {
@@ -30,25 +28,39 @@ var quotes = [
     }
 ]
 
+// Function that gives a random color in RGB value.
+function randomBackground() {
+    a = Math.floor(Math.random() * 256);
+    b = Math.floor(Math.random() * 256);
+    c = Math.floor(Math.random() * 256);
+    rgbColor = 'rgb(' + a + ',' + b + ',' + c + ')';
+    return rgbColor;
+};
 
 // Create the getRandomQuote function and name it getRandomQuote
 function getRandomQuote(array) {
     var randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
-    
+
     return randomQuote;
 };
-
-getRandomQuote();
-
 
 // Create the printQuote funtion and name it printQuote
 function printQuote(randomQuote) {
     randomQuote = getRandomQuote();
-    message =  '<p class="quote">' + randomQuote.quote + '</p>';
+    message = '<p class="quote">' + randomQuote.quote + '</p>';
     message += '<p class="source">' + randomQuote.source;
+    // If quote has citation and year then display them
+    if (randomQuote.citation != undefined) {
+        message += '<span class="citation">' + randomQuote.citation + '</span>';
+        if (randomQuote.year != undefined) {
+            message += '<span class="year">' + randomQuote.year + '</span>';
+        }
+    }
+    message += '</p>'
+// First part changes the quotes while second changes the background color
     document.getElementById('quote-box').innerHTML = message;
+    document.body.style.backgroundColor = randomBackground();
     return message;
-
 };
 
 
